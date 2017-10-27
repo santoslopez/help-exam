@@ -9,11 +9,11 @@ public class Solucion{
   private String usuario;
   private String nombre;
   private String password;
-  private static LinkedList linkedList =
-  linkedList=new LinkedList();//creamos una instancia de LinkedList
-  //estatico porque lo vamos a llamar desde el metodo menuPrincipal y este es estatico
 
-  //constructor y este va servir para hacerle saber al linkedList que vamos almacenar 3 valores
+  /*creamos una instancia de LinkedList estatico porque lo vamos a llamar desde el metodo menuPrincipal y este es estatico*/
+  private static LinkedList linkedList=new LinkedList();
+
+  //constructor de 3 parametros
   public Solucion(String usuario,String nombre,String password){
     this.usuario=usuario;
     this.nombre=nombre;
@@ -23,28 +23,25 @@ public class Solucion{
 
   //le vamos a dar un formato al toString para que nos despliege correctamente nuestros datos
   public String toString(){
-    String informacion = "Usuario: "+this.usuario + " Nombre: " + this.nombre +  "Password: " +this.password;
+    String informacion = "Usuario: "+this.usuario + " Nombre: " + this.nombre +  " Password: " +this.password;
     return informacion;
   }
 
 
-  //vamos a pasarle un parametro de tipo LinkedList para desplegar su contenido
-  public static void listado(LinkedList linkedList){
-
-    //si el contenido del linkedList esta vacio
+  //desplegamos el contenido de un linkedlist, este metodo lo vamos a utilizar cuando queremos eliminar un usuario o desplegar usuario
+  public static void recorrerLista(LinkedList linkedList){
+    //verificamos si el LinkedList esta vacio
     if(linkedList.isEmpty()){
-    System.out.println("La lista está vacia");
-    return;
+    System.out.println("ERROR!!! La lista está vacia. ");
+    menuPrincipal();
     }
 
-    //la clase Iterator nos va servir para recorrer los datos del linkedList
-    Iterator it = linkedList.iterator();
-
-    System.out.println("Los elementos de la lista son: ");
-    while(it.hasNext()){
-      System.out.println(it.next().toString());
+    int longitudLista=linkedList.size();
+    //recorremos nuestra lista
+    for (int ind=0; ind<longitudLista;ind++ ) {
+        //imprimos nuestra lista agregandole el numero de indice de cada dato
+        System.out.println("Indice: "+ind+ " "+linkedList.get(ind).toString());
     }
-
   }
 
   public static void menuPrincipal(){
@@ -52,7 +49,7 @@ public class Solucion{
     Scanner escaner = new Scanner(System.in);
     System.out.println("1. Agregar usuario");
     System.out.println("2. Listar");
-    System.out.println("3. Buscar usuario");
+    System.out.println("3. Modificar usuario");
     System.out.println("4. Eliminar usuario");
     System.out.println("5. Salir");
 
@@ -106,13 +103,6 @@ public class Solucion{
         //mostramos un resumen de usuario agregado correctamente
         System.out.println("\nUsuario agregado correctamente!!!\n");
 
-        /*desplegamos un resumen con los datos del usuario*/
-        System.out.println("Resumen");
-        System.out.println("Nombre usuario :"+agregarUsuario);
-        System.out.println("Nombre :"+agregarNombre);
-        System.out.println("Nombre :"+agregarPassword);
-
-
         /*hacemos uso del constructor de 3 parametros para guardar estos valores en el LinkedList*/
         Solucion todosDatos = new Solucion(agregarUsuario,agregarNombre,agregarPassword);
         linkedList.add(todosDatos);//agregamos los datos al linkedlist
@@ -122,29 +112,58 @@ public class Solucion{
 
         break;
 
-        //vamos listar
+        //vamos a listar todos los usuarios
         case "2":
 
-        listado(linkedList);
+        //invocamos al metodo que habiamos declarado para listar los usuarios, le pasamos el parametro de LinkedList
+        recorrerLista(linkedList);
         //volvemos a llamar al menu principal para que siempre se permita a realizar una accion hasta que se ingrese la opcion de salir
         menuPrincipal();
         break;
 
-        //vamos eliminar
+        //vamos a modificar los datos del usuario
         case "3":
+        recorrerLista(linkedList);
+
+        /*nada del otro mundo, declaracion de variables y Scanner*/
+        System.out.println("-----------ACTUALIZACION DE DATOS-----------------");
+        Scanner modificarValor = new Scanner(System.in);
+        System.out.println("Ingrese el indice del usuario a MODIFICAR: ");
+        int indiceModificar = Integer.parseInt(modificarValor.nextLine());//por medio del indice vamos a saber que datos modificar
+
+        System.out.println("Actualice su usuario: ");
+        String updateUsuario = modificarValor.nextLine();
+
+        System.out.println("Actualice su nombre: ");
+        String  updateNombre = modificarValor.nextLine();
+
+        System.out.println("Actualice su password: ");
+        String  updatePassword = modificarValor.nextLine();
+
+        /*hacemos uso del constructor de 3 parametros para guardar estos valores en el LinkedList*/
+        Solucion updateDatos = new Solucion(updateUsuario,updateNombre,updatePassword);
+
+        linkedList.set(indiceModificar,updateDatos);//actualizamos todos los datos del usuario
+
+        System.out.println("Usuario modificado correctamente!!!");
+        menuPrincipal();
         break;
 
         case "4":
+        //invocamos al metodo que habiamos declarado
+        recorrerLista(linkedList);//mostramos los valores del linkedList si hubiera datos
+        System.out.println("----------------------------");
+        Scanner eliminarValor = new Scanner(System.in);
+        System.out.println("Ingrese el indice del usuario a eliminar: ");
+        int indiceEliminar = eliminarValor.nextInt();
+        linkedList.remove(indiceEliminar);//eliminamos el usuario por medio del indice ingresado
+        System.out.println("Usuario eliminado correctamente!!!");
+        menuPrincipal();
         break;
 
         case "5":
         System.out.println("Saliendo del programa");
         System.exit(0);//salimos del menu principal
-        break;
-
-        /*esto puede ser opcional*/
-        default:
-        System.out.println("Opcion incorrecta");
         break;
 
       }
@@ -154,5 +173,4 @@ public class Solucion{
       menuPrincipal();
     }
   }
-
 }
