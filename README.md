@@ -1,37 +1,48 @@
-## Welcome to GitHub Pages
+## Estructura de datos - LinkedList
 
-You can use the [editor on GitHub](https://github.com/santoslopez/help-exam/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Ejemplo de posible examen final de estructura de datos. 
+  
+##### Uso de LinkedList para agregar, modificar, mostrar y eliminar datos.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Acerca de
 
-### Markdown
+Este ejemplo se publica con la finalidad de ayudar a estudiantes de Ingeniería en Sistemas o estudiantes de cualquier otra carrera en su preparación para cualquier prueba sobre algún examen práctico que esten por presentar sobre programación, o para reforzar algún tipo de aprendizaje sobre LinkedList y no para presentar esto como entrega sobre algún trabajo sin haber realizado absolutamente nada.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+El ejemplo puede ser utilizado para su conveniencia en tareas o proyectos siempre y cuando se respete lo mencionado anteriormente.
 
 ```markdown
-Syntax highlighted code block
+ La clase tiene el siguiente menu  
 
-# Header 1
-## Header 2
-### Header 3
+# 1. Agregar
+# 2. Modificar
+# 3. Listar
+# 4. Eliminar
+# 5. Salir
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+Para mas detalles de las clases del repositorio leer sus respectivos comentarios.
 
-### Jekyll Themes
+### Probando archivos
+Para compilar escribir
+```
+santoslopez@harvard:~$ javac Solucion.java
+santoslopez@harvard:~$ javac ExamenFinal.java
+santoslopez@harvard:~$ java ExamenFinal
+```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/santoslopez/help-exam/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+### Nota
 
-### Support or Contact
+Importante mencionar necesitan tener instalado el JDK de Java. Para saber si tienen instalado Java pueden escribir "java -version"
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+```
+santoslopez@harvard:~$ java -version
+```
+
+Si existe alguna versión de Java instalado pueden tener algo similar a:
+```
+java version "1.8.0_131"
+Java(TM) SE Runtime Environment (build 1.8.0_131-b11)
+Java HotSpot(TM) 64-Bit Server VM (build 25.131-b11, mixed mode)
+```
+Si en caso no les aparece nada necesitan instalarlo a su computadora, pueden descargarlo desde la página de www.oracle.com 
